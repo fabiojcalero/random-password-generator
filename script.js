@@ -59,4 +59,8 @@ function leftPasswordBtnCopyToClipboard() {
 
 function rightPasswordBtnCopyToClipboard() {
     navigator.clipboard.writeText(rightPasswordBtn.textContent);
+    notification.style.opacity = 1;
+    setTimeout(() => {
+        notification.style.opacity = 0;
+    }, 1500);
 }
