@@ -97,3 +97,68 @@ hr {
     bottom: 30px;
     right: 20px;
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    margin-top: 36px;
+    height: 20px;
+    width: 40px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    background-color: var(--dark-btn-color);
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    width: 26px;
+    height: 26px;
+    bottom: -3px;
+    background-color: var(--title);
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.label {
+    display: inline-block;
+}
+
+#copy-notification {
+    background-color: var(--dark-btn-color);
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    margin: 0 auto;
+    width: 180px;
+    padding: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}

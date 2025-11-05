@@ -7,6 +7,8 @@ let moonIconEl = document.getElementById("moon-icon");
 let sunIconEl = document.getElementById("sun-icon");
 let leftPasswordBtn = document.getElementById("first-postulate");
 let rightPasswordBtn = document.getElementById("second-postulate");
+let specialCharacterCheckbox = document.getElementById("special-char-checkbox");
+let notification = document.getElementById("copy-notification");
 
 let passwordLength = 15;
 
@@ -33,9 +35,28 @@ function displayGeneratedPasswords() {
 function generatePassword() {
     let randomIndex;
     let password = "";
+    let maxIndex = 0;
+    if (specialCharacterCheckbox.checked) {
+        maxIndex = characters.length;
+    } else {
+        maxIndex = 62;
+    }
     for (let i = 0; i < 15; i++) {
-        randomIndex = Math.floor(Math.random() * characters.length);
+        randomIndex = Math.floor(Math.random() * maxIndex);
         password += characters[randomIndex];
     }
     return password;
+}
+
+function leftPasswordBtnCopyToClipboard() {
+    navigator.clipboard.writeText(leftPasswordBtn.textContent);
+    notification.style.opacity = 1;
+    setTimeout(() => {
+        notification.style.opacity = 0;
+    }, 1500);
+    
+}
+
+function rightPasswordBtnCopyToClipboard() {
+    navigator.clipboard.writeText(rightPasswordBtn.textContent);
 }
